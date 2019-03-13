@@ -1,25 +1,30 @@
 <template>
-    <div>
-        Standard of Living
-    </div>
+  <div>Standard of Living</div>
 </template>
 
 <script>
-import EventService from '../services/EventService.js'
-    export default {
-        data() {
-            return {
-                cities: []
-            }
-        },
-        mounted(){
-            EventService.getScores()
-            .then(res => res.map(city => ({categories: city.data.categories, summary: city.data.summary})))
-            .then(cities => this.cities = cities)
-        }
-    }
+import EventService from "../services/EventService.js";
+export default {
+  data() {
+    return {
+      cities: []
+    };
+  },
+  mounted() {
+    EventService.getScores()
+      .then(res =>
+        res.map(city => ({
+          categories: city.data.categories,
+          summary: city.data.summary.replace(/<\/?[^>]+(>|$)/g, "")
+        }))
+      )
+      .then(cities => (this.cities = cities))
+      .then(() => {
+        this.cities.map(city => (city.city = city.summary.split(",")[0]));
+      });
+  }
+};
 </script>
 
 <style scoped>
-
 </style>
