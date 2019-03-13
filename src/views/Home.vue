@@ -15,7 +15,7 @@
     <v-layout align-end justify-end row fill-height>
       <div id="home--btns">
         <v-btn large round ripple color="#f7e99b" to="/cost">Cost of Living</v-btn>
-        <v-btn large round ripple color="#edbd90" to="/standart">Standard of Living</v-btn>
+        <v-btn large round ripple color="#edbd90" to="/standard">Standard of Living</v-btn>
       </div>
     </v-layout>
   </v-layout>
@@ -37,8 +37,8 @@ export default {};
     padding-top: 2%;
   }
   &--btns {
-    padding-right: 10%;
-    padding-bottom: 25%;
+    margin-right: 10%;
+    margin-bottom: 25%;
   }
 }
 
