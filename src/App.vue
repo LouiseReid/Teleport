@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div id="view">
     <router-view></router-view>
-  </div>
+  </div>  
 </template>
 
 <script>
@@ -10,6 +10,15 @@
   }
 </script>
 
-<style scoped>
+<style>
+
+  body {
+    font-family: 'Overpass', sans-serif;
+  }
+
+  #view {
+    height: 100vh;
+    widows: 100vw;
+  }
 
 </style>
