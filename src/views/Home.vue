@@ -33,6 +33,7 @@ export default {};
     background-position-y: 100%;
   }
   &--text {
+      color: #382d20;
     padding-left: 10%;
     padding-top: 2%;
   }
@@ -44,6 +45,7 @@ export default {};
 
 h1 {
   font-size: 60px;
+
   & span {
     display: list-item;
     list-style: none;
