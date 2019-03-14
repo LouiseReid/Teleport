@@ -4,6 +4,7 @@
       <v-progress-circular indeterminate color="#829fce"/>
     </div>
     <v-container grid-list-md v-else id="cost-container--inner">
+        <slot name="nav"/>
       <v-layout align-center justify-center row>
         <input
           type="text"

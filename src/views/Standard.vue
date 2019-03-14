@@ -4,6 +4,7 @@
       <v-progress-circular  indeterminate color="#829fce" />
     </div>
     <v-container grid-list-md v-else id="standard-container--inner">
+              <slot name="nav"/>
       <v-layout align-center justify-center row>
         <v-btn class="mr-5" color="#e7e9ea" @click="sortHighest" depressed small>Highest Score &uarr;</v-btn>
         <v-btn class="mr-5" color="#e7e9ea" @click="sortLowest" depressed small>Lowest Score &darr;</v-btn>
