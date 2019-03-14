@@ -2,11 +2,12 @@
   <div>
     <v-progress-circular v-if="cities.length === 0" indeterminate color="#829fce"/>
     <v-container grid-list-md v-else>
-        <div>
-            <button @click="sortHighest">Highest Score &uarr;</button>
-            <button @click="sortLowest">Lowest Score &darr;</button>
-        </div>
-      <v-layout row wrap>
+      <div>
+        <button @click="sortHighest">Highest Score &uarr;</button>
+        <button @click="sortLowest">Lowest Score &darr;</button>
+        <input type="text" v-model="search" @keyup="searchForCity" placeholder="search for city..." id="location-search">
+      </div>
+      <v-layout row wrap v-if="!search">
         <v-flex xs3 v-for="(city, index) in cities" :key="index">
           <v-card class="ma-2" color="#d0d7ca">
             <v-card-text primary-title class="pa-2">
@@ -28,6 +29,22 @@
           </v-card>
         </v-flex>
       </v-layout>
+      <v-layout v-else>
+        <v-card class="ma-2 pa-4" color="#d0d7ca">
+          <v-card-text primary-title class="pa-2">
+            <h3 class="text-capitalize text-sm-center">{{searchedCity.name}}</h3>
+          </v-card-text>
+          <v-card-text v-for="(category, index) in searchedCity.categories" :key="index" class="pa-0 mb-0">
+            <p class="mb-1 text-sm-center" secondary-title>
+              <strong>{{category.name}}:</strong>
+              {{category['score_out_of_10'].toFixed(2)}}
+            </p>
+          </v-card-text>
+          <v-card-text class="font-weight-bold">
+            <p class="text-md-center">Teleport City Score: {{searchedCity.score.toFixed(2)}}</p>
+          </v-card-text>
+        </v-card>
+      </v-layout>
     </v-container>
   </div>
 </template>
@@ -37,18 +54,26 @@ import EventService from "../services/EventService.js";
 export default {
   data() {
     return {
-      cities: []
+      cities: [],
+      search: "",
+      searchedCity: null
     };
   },
   methods: {
-      sortHighest(){
-          const sorted = this.cities.sort((a, b) => b.score - a.score)          
-          return this.cities = sorted        
-      },
-      sortLowest(){
-          const sorted = this.cities.sort((a, b) => a.score - b.score)          
-          return this.cities = sorted        
-      }
+    sortHighest() {
+      const sorted = this.cities.sort((a, b) => b.score - a.score);
+      return (this.cities = sorted);
+    },
+    sortLowest() {
+      const sorted = this.cities.sort((a, b) => a.score - b.score);
+      return (this.cities = sorted);
+    },
+    searchForCity() {
+      let foundCity = this.cities.find((city) => {
+        return city.name.toLowerCase().indexOf(this.search.toLowerCase()) > -1
+      })
+      this.searchedCity = foundCity
+    }
   },
   mounted() {
     EventService.getScores()
