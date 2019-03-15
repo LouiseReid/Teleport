@@ -12,7 +12,7 @@
         <span>the world</span>
       </p>
     </div>
-    <v-layout align-end justify-end row fill-height>
+    <v-layout>
       <div id="home--btns">
         <v-btn large round ripple color="#f7e99b" to="/cost">Cost of Living</v-btn>
         <v-btn large round ripple color="#edbd90" to="/standard">Standard of Living</v-btn>
@@ -33,13 +33,14 @@ export default {};
     background-position-y: 100%;
   }
   &--text {
-      color: #382d20;
+    color: #382d20;
     padding-left: 10%;
     padding-top: 2%;
   }
   &--btns {
-    margin-right: 10%;
-    margin-bottom: 25%;
+    position: absolute;
+    bottom: 25%;
+    right: 10%;
   }
 }
 
@@ -58,6 +59,29 @@ p {
   & span {
     display: list-item;
     list-style: none;
+  }
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: portrait) {
+  #home {
+    &--text {
+      display: flex;
+      height: 75vh;
+      width: 100vw;
+    }
+    &--btns {
+      bottom: 20%;
+      left: 40%;
+    }
+  }
+
+  h1 {
+    font-size: 50px;
+  }
+
+  p {
+    align-self: center;
+    margin-top: -5%;
   }
 }
 </style>

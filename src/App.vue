@@ -19,6 +19,6 @@ body {
 
 #view {
   height: 100vh;
-  widows: 100vw;
+  width: 100vw;
 }
 </style>
