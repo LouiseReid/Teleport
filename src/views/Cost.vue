@@ -15,7 +15,7 @@
         >
       </v-layout>
       <v-layout row wrap v-if="!search">
-        <v-flex xs4 v-for="(city, index) in cities" :key="index">
+        <v-flex xs6 md3 v-for="(city, index) in cities" :key="index" >
           <v-card class="ma-2 pa-3" color="#e7e9ea">
             <v-card-text primary-title class="pa-2">
               <h3 class="text-capitalize text-sm-center">{{city.name}}</h3>
@@ -26,7 +26,7 @@
               class="pa-0 mb-0"
             >
               <div v-if="category.label !== 'Inflation [Teleport score]'">
-                <p class="mb-1 text-sm-center" secondary-title>
+                <p class="mb-1 text-sm-center text-xs-center" secondary-title>
                   <strong>{{category.label}}:</strong>
                   ${{category['currency_dollar_value']}}
                 </p>
@@ -46,7 +46,7 @@
               class="pa-0 mb-0"
             >
               <div v-if="category.label !== 'Inflation [Teleport score]'">
-                <p class="mb-1 text-sm-center" secondary-title>
+                <p class="mb-1 text-sm-center text-xs-center" secondary-title>
                   <strong>{{category.label}}:</strong>
                   ${{category['currency_dollar_value']}}
                 </p>
